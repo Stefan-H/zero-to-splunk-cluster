@@ -1,0 +1,12 @@
+vpc_cidr = "10.0.0.0/16"
+subnet_cidr = "10.0.1.0/24"
+aws_key_name = "Stefan"
+indexer_instance_size = "m5.xlarge"
+splunk_instance_size = "m5.xlarge"
+ssh_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGJns/T4gReQLLWpbpHMxeO6TdkE+Y2m5sXpq8vLC9xu stefanhutchison@Stefans-MacBook-Pro.local"
+rpm_download_url = "https://download.splunk.com/products/splunk/releases/9.0.4.1/linux/splunk-9.0.4.1-419ad9369127-linux-2.6-x86_64.rpm"
+license_s3_uri = "s3://my-build-repository-shutchison/Splunk.License"
+search_factor =  2
+replication_factor = 2
+indexer_count = 3
+splunk_ta_nix_download_url = "s3://my-build-repository-shutchison/splunk-add-on-for-unix-and-linux_880.tgz"
