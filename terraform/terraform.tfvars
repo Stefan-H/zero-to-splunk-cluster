@@ -9,4 +9,4 @@ license_s3_uri = "s3://my-build-repository-shutchison/Splunk.License"
 search_factor =  2
 replication_factor = 2
 indexer_count = 3
-splunk_ta_nix_download_url = "s3://my-build-repository-shutchison/splunk-add-on-for-unix-and-linux_880.tgz"
+splunk_ta_nix_s3_uri = "s3://my-build-repository-shutchison/splunk-add-on-for-unix-and-linux_880.tgz"

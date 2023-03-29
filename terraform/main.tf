@@ -69,7 +69,7 @@ module "indexer_manager" {
   instance_size              = var.splunk_instance_size
   ssh_key                    = var.ssh_key
   rpm_download_url           = var.rpm_download_url
-  splunk_ta_nix_download_url = var.splunk_ta_nix_download_url
+  splunk_ta_nix_download_url = var.splunk_ta_nix_s3_uri
   search_factor              = var.search_factor
   replication_factor         = var.replication_factor
   depends_on = [
@@ -90,7 +90,7 @@ module "deployment_server" {
   instance_size              = var.splunk_instance_size
   ssh_key                    = var.ssh_key
   rpm_download_url           = var.rpm_download_url
-  splunk_ta_nix_download_url = var.splunk_ta_nix_download_url
+  splunk_ta_nix_download_url = var.splunk_ta_nix_s3_uri
   depends_on = [
     aws_route53_record.lm
   ]
