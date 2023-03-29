@@ -43,6 +43,7 @@ variable "rpm_download_url" {
   type = string
 }
 
-variable "splunk_ta_nix_download_url" {
+variable "splunk_ta_nix_s3_uri" {
   type = string
 }
+
