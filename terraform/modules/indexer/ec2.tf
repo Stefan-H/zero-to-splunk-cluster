@@ -21,6 +21,16 @@ resource "aws_instance" "splunk_idx" {
   root_block_device {
     volume_size = 50
   }
+  dynamic "ebs_block_device" {
+    for_each = var.indexer_ebs_config
+    content {
+      device_name = ebs_block_device.value.name
+      volume_size = ebs_block_device.value.volume_size
+      volume_type = ebs_block_device.value.volume_type
+      iops        = ebs_block_device.value.iops != null ? ebs_block_device.value.iops : null
+      throughput  = ebs_block_device.value.throughput != null ? ebs_block_device.value.throughput : null
+    }
+  }
 }
 
 output "indexer_ips" {

@@ -10,3 +10,10 @@ search_factor =  2
 replication_factor = 2
 indexer_count = 3
 splunk_ta_nix_s3_uri = "s3://my-build-repository-shutchison/splunk-add-on-for-unix-and-linux_880.tgz"
+indexer_ebs_config = [{
+	name = "/dev/xvdb"
+    volume_type = "io2"
+    volume_size = 50
+    iops        = 10000
+    throughput  = null
+    }]

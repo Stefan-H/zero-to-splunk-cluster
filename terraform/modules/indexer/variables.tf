@@ -34,3 +34,13 @@ variable "rpm_download_url" {
   type = string
 }
 
+variable "indexer_ebs_config" {
+  type = list(object({
+    name        = string
+    volume_type = string
+    volume_size = number
+    iops        = number
+    throughput  = number
+  }))
+}
+

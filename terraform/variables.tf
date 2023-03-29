@@ -47,3 +47,13 @@ variable "splunk_ta_nix_s3_uri" {
   type = string
 }
 
+variable "indexer_ebs_config" {
+  type = list(object({
+    name        = string
+    volume_type = string
+    volume_size = number
+    iops        = number
+    throughput  = number
+  }))
+}
+

@@ -1,4 +1,15 @@
 
+mkdir /mount
+mkdir /mount/dev
+for drive in /dev/xvd*
+do
+	if [[ ! $drive =~ .*xvda.* ]]; then
+		mkfs.ext4 $drive
+		mkdir /mount$drive
+		mount $drive /mount$drive
+	fi
+done
+
 
 /opt/splunk/bin/splunk edit licenser-localpeer -manager_uri 'https://lm.lab.splunk:8089' -auth admin:$${password}
 

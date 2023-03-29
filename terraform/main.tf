@@ -99,15 +99,16 @@ module "deployment_server" {
 module "indexers" {
   source = "./modules/indexer/"
 
-  ami_id           = data.aws_ami.amzLinux.id
-  subnet_ids       = [aws_subnet.public.id]
-  key_name         = var.aws_key_name
-  instance_profile = aws_iam_instance_profile.secrets_manager_profile.id
-  security_groups  = [aws_security_group.Splunk_All.id]
-  indexer_count    = var.indexer_count
-  instance_size    = var.splunk_instance_size
-  ssh_key          = var.ssh_key
-  rpm_download_url = var.rpm_download_url
+  ami_id             = data.aws_ami.amzLinux.id
+  subnet_ids         = [aws_subnet.public.id]
+  key_name           = var.aws_key_name
+  instance_profile   = aws_iam_instance_profile.secrets_manager_profile.id
+  security_groups    = [aws_security_group.Splunk_All.id]
+  indexer_count      = var.indexer_count
+  indexer_ebs_config = var.indexer_ebs_config
+  instance_size      = var.splunk_instance_size
+  ssh_key            = var.ssh_key
+  rpm_download_url   = var.rpm_download_url
   depends_on = [
     aws_route53_record.im
   ]
