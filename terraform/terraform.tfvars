@@ -11,6 +11,8 @@ search_factor =  2
 replication_factor = 2
 indexer_count = 3
 splunk_ta_nix_s3_uri = "s3://my-build-repository-shutchison/splunk-add-on-for-unix-and-linux_880.tgz"
+#optional list of additional volumes. must use xvdb,xvdc, etc to have the volumes auto-mount.
+#these will get mounted as /mount/dev/xvdb, etc. 
 indexer_ebs_config = [{
     name = "/dev/xvdb"
     volume_type = "io2"
@@ -18,12 +20,14 @@ indexer_ebs_config = [{
     iops        = 10000
     throughput  = null
     }]
+#root volume settings for indexers
 indexer_root_ebs_config = {
     volume_type = "io2"
     volume_size = 50
     iops        = 10000
     throughput  = null
     }
+#root volume settings for anything other than an indexer
 splunk_root_ebs_config = {
     volume_type = "io2"
     volume_size = 50
