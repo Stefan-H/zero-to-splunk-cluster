@@ -10,6 +10,10 @@ variable "aws_key_name" {
   type = string
 }
 
+variable "domain_name" {
+  type = string
+}
+
 variable "indexer_instance_size" {
   type = string
 }

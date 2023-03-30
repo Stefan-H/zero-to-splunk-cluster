@@ -10,7 +10,9 @@ resource "aws_instance" "splunk_lm" {
       region           = var.region
     }),
     templatefile("./modules/license_manager/license_manager.sh.tpl", {
-      license_s3_uri = var.license_s3_uri
+      license_s3_uri         = var.license_s3_uri
+      deployment_server_fqdn = "ds.${var.domain_name}"
+
   }))
   key_name               = var.key_name
   iam_instance_profile   = var.instance_profile

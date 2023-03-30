@@ -11,6 +11,8 @@ resource "aws_instance" "splunk_ds" {
     }),
     templatefile("./modules/deployment_server/deployment_server.sh.tpl", {
       splunk_ta_nix_download_url = var.splunk_ta_nix_download_url
+      license_manager_fqdn       = "lm.${var.domain_name}"
+      indexer_manager_fqdn       = "im.${var.domain_name}"
   }))
   key_name               = var.key_name
   iam_instance_profile   = var.instance_profile

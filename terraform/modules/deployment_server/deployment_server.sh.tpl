@@ -1,6 +1,6 @@
 
 
-/opt/splunk/bin/splunk edit licenser-localpeer -manager_uri 'https://lm.lab.splunk:8089' -auth admin:$${password}
+/opt/splunk/bin/splunk edit licenser-localpeer -manager_uri 'https://${license_manager_fqdn}:8089' -auth admin:$${password}
 
 
 
@@ -129,7 +129,7 @@ echo "# Default Outputs" > /opt/splunk/etc/deployment-apps/default_outputs/local
 cat <<EOT >> /opt/splunk/etc/deployment-apps/default_outputs/local/outputs.conf
 [indexer_discovery:manager1]
 pass4SymmKey = $${pass4symmkey}
-manager_uri = https://im.lab.splunk:8089
+manager_uri = https://${indexer_manager_fqdn}:8089
 
 [tcpout:default_indexers]
 indexerDiscovery = manager1

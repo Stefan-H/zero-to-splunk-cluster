@@ -32,6 +32,7 @@ module "search_head" {
   ami_id                 = data.aws_ami.amzLinux.id
   subnet_id              = aws_subnet.public.id
   key_name               = var.aws_key_name
+  domain_name            = var.domain_name
   instance_profile       = aws_iam_instance_profile.secrets_manager_profile.id
   security_groups        = [aws_security_group.Splunk_All.id]
   instance_size          = var.splunk_instance_size
@@ -51,6 +52,7 @@ module "license_manager" {
   ami_id                 = data.aws_ami.amzLinux.id
   subnet_id              = aws_subnet.public.id
   key_name               = var.aws_key_name
+  domain_name            = var.domain_name
   instance_profile       = aws_iam_instance_profile.secrets_manager_profile.id
   security_groups        = [aws_security_group.Splunk_All.id]
   instance_size          = var.splunk_instance_size
@@ -69,6 +71,7 @@ module "indexer_manager" {
   ami_id                     = data.aws_ami.amzLinux.id
   subnet_id                  = aws_subnet.public.id
   key_name                   = var.aws_key_name
+  domain_name                = var.domain_name
   instance_profile           = aws_iam_instance_profile.secrets_manager_profile.id
   security_groups            = [aws_security_group.Splunk_All.id]
   instance_size              = var.splunk_instance_size
@@ -92,6 +95,7 @@ module "deployment_server" {
   ami_id                     = data.aws_ami.amzLinux.id
   subnet_id                  = aws_subnet.public.id
   key_name                   = var.aws_key_name
+  domain_name                = var.domain_name
   instance_profile           = aws_iam_instance_profile.secrets_manager_profile.id
   security_groups            = [aws_security_group.Splunk_All.id]
   instance_size              = var.splunk_instance_size
@@ -111,6 +115,7 @@ module "indexers" {
   ami_id                  = data.aws_ami.amzLinux.id
   subnet_ids              = [aws_subnet.public.id]
   key_name                = var.aws_key_name
+  domain_name             = var.domain_name
   instance_profile        = aws_iam_instance_profile.secrets_manager_profile.id
   security_groups         = [aws_security_group.Splunk_All.id]
   indexer_count           = var.indexer_count

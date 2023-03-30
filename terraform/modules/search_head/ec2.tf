@@ -9,7 +9,11 @@ resource "aws_instance" "splunk_sh" {
       rpm_download_url = var.rpm_download_url
       region           = var.region
     }),
-  templatefile("./modules/search_head/search_head.sh.tpl", {}))
+    templatefile("./modules/search_head/search_head.sh.tpl", {
+      license_manager_fqdn   = "lm.${var.domain_name}"
+      indexer_manager_fqdn   = "im.${var.domain_name}"
+      deployment_server_fqdn = "ds.${var.domain_name}"
+  }))
   key_name               = var.key_name
   iam_instance_profile   = var.instance_profile
   vpc_security_group_ids = var.security_groups

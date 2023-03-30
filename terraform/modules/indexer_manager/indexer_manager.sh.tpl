@@ -1,5 +1,5 @@
 #Join as a license peer to the license manager
-/opt/splunk/bin/splunk edit licenser-localpeer -manager_uri 'https://lm.lab.splunk:8089' -auth admin:$${password}
+/opt/splunk/bin/splunk edit licenser-localpeer -manager_uri 'https://${license_manager_fqdn}:8089' -auth admin:$${password}
 
 #Copy down Splunk_TA_nix for use on the indexers
 aws s3 cp ${splunk_ta_nix_download_url} /opt/splunk/etc/manager-apps/
@@ -144,9 +144,6 @@ pass4SymmKey = $${pass4symmkey}
 polling_rate = 10
 indexerWeightByDiskCapacity = true
 EOT
-
-#join to the deployment server - this is likely a bad idea, but will play around with this.
-/opt/splunk/bin/splunk set deploy-poll ds.lab.splunk:8089 -auth admin:$${password}
 
 
 /opt/splunk/bin/splunk restart
