@@ -1,3 +1,7 @@
+variable "region" {
+  type = string
+}
+
 variable "vpc_cidr" {
   type = string
 }
@@ -12,6 +16,24 @@ variable "indexer_instance_size" {
 
 variable "splunk_instance_size" {
   type = string
+}
+
+variable "indexer_root_ebs_config" {
+  type = object({
+    volume_type = string
+    volume_size = number
+    iops        = number
+    throughput  = number
+  })
+}
+
+variable "splunk_root_ebs_config" {
+  type = object({
+    volume_type = string
+    volume_size = number
+    iops        = number
+    throughput  = number
+  })
 }
 
 variable "ssh_key" {

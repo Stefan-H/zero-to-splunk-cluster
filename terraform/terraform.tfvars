@@ -1,3 +1,4 @@
+region = "us-west-2"
 vpc_cidr = "10.0.0.0/16"
 subnet_cidr = "10.0.1.0/24"
 aws_key_name = "Stefan"
@@ -11,9 +12,21 @@ replication_factor = 2
 indexer_count = 3
 splunk_ta_nix_s3_uri = "s3://my-build-repository-shutchison/splunk-add-on-for-unix-and-linux_880.tgz"
 indexer_ebs_config = [{
-	name = "/dev/xvdb"
+    name = "/dev/xvdb"
     volume_type = "io2"
     volume_size = 50
     iops        = 10000
     throughput  = null
     }]
+indexer_root_ebs_config = {
+    volume_type = "io2"
+    volume_size = 50
+    iops        = 10000
+    throughput  = null
+    }
+splunk_root_ebs_config = {
+    volume_type = "io2"
+    volume_size = 50
+    iops        = 10000
+    throughput  = null
+    }

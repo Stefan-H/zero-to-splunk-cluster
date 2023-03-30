@@ -10,6 +10,7 @@ resource "aws_instance" "splunk_idx" {
     templatefile("./modules/base_splunk/base.sh.tpl", {
       ssh_key          = var.ssh_key
       rpm_download_url = var.rpm_download_url
+      region           = var.region
     }),
   templatefile("./modules/indexer/indexer.sh.tpl", {}))
   key_name               = var.key_name
@@ -19,7 +20,10 @@ resource "aws_instance" "splunk_idx" {
     Name = "Splunk Indexer ${count.index + 1}"
   }
   root_block_device {
-    volume_size = 50
+    volume_size = var.indexer_root_ebs_config.volume_size
+    volume_type = var.indexer_root_ebs_config.volume_type
+    iops        = var.indexer_root_ebs_config.iops != null ? var.indexer_root_ebs_config.iops : null
+    throughput  = var.indexer_root_ebs_config.throughput != null ? var.indexer_root_ebs_config.throughput : null
   }
   dynamic "ebs_block_device" {
     for_each = var.indexer_ebs_config

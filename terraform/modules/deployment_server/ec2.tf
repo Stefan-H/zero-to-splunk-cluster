@@ -7,6 +7,7 @@ resource "aws_instance" "splunk_ds" {
     templatefile("./modules/base_splunk/base.sh.tpl", {
       ssh_key          = var.ssh_key
       rpm_download_url = var.rpm_download_url
+      region           = var.region
     }),
     templatefile("./modules/deployment_server/deployment_server.sh.tpl", {
       splunk_ta_nix_download_url = var.splunk_ta_nix_download_url
@@ -18,7 +19,10 @@ resource "aws_instance" "splunk_ds" {
     Name = "Splunk Deployment Server"
   }
   root_block_device {
-    volume_size = 50
+    volume_size = var.splunk_root_ebs_config.volume_size
+    volume_type = var.splunk_root_ebs_config.volume_type
+    iops        = var.splunk_root_ebs_config.iops != null ? var.splunk_root_ebs_config.iops : null
+    throughput  = var.splunk_root_ebs_config.throughput != null ? var.splunk_root_ebs_config.throughput : null
   }
 }
 

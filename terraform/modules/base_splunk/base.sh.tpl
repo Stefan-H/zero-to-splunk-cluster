@@ -60,8 +60,8 @@ EOT
 /opt/splunk/bin/splunk stop
 
 #Get secrets from secret manager (these are configured outside of terraform.)
-password=`aws secretsmanager get-secret-value --region us-west-2 --secret-id splunk_password --query SecretString --output text`
-pass4symmkey=`aws secretsmanager get-secret-value --region us-west-2 --secret-id pass4symmkey --query SecretString --output text`
+password=`aws secretsmanager get-secret-value --region ${region} --secret-id splunk_password --query SecretString --output text`
+pass4symmkey=`aws secretsmanager get-secret-value --region ${region} --secret-id pass4symmkey --query SecretString --output text`
 
 #Write the admin seed user
 cat <<EOT >> /opt/splunk/etc/system/local/user-seed.conf

@@ -6,7 +6,7 @@ I'll update this in the next couple days to have more customization to the ebs v
 
 This is really just a playground, but the principles in this might be useful to someone.
 
-You'll need to configure two aws_secrets in the us-west-2 region:
+You'll need to configure two aws_secrets in the region specified in your input vars:
 splunk_password
 pass4symmkey
 

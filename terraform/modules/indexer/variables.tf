@@ -1,3 +1,7 @@
+variable "region" {
+  type = string
+}
+
 variable "ami_id" {
   type = string
 }
@@ -42,5 +46,14 @@ variable "indexer_ebs_config" {
     iops        = number
     throughput  = number
   }))
+}
+
+variable "indexer_root_ebs_config" {
+  type = object({
+    volume_type = string
+    volume_size = number
+    iops        = number
+    throughput  = number
+  })
 }
 

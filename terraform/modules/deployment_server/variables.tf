@@ -1,3 +1,7 @@
+variable "region" {
+  type = string
+}
+
 variable "ami_id" {
   type = string
 }
@@ -35,3 +39,11 @@ variable "splunk_ta_nix_download_url" {
   type = string
 }
 
+variable "splunk_root_ebs_config" {
+  type = object({
+    volume_type = string
+    volume_size = number
+    iops        = number
+    throughput  = number
+  })
+}

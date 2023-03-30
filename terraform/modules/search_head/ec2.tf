@@ -7,6 +7,7 @@ resource "aws_instance" "splunk_sh" {
     templatefile("./modules/base_splunk/base.sh.tpl", {
       ssh_key          = var.ssh_key
       rpm_download_url = var.rpm_download_url
+      region           = var.region
     }),
   templatefile("./modules/search_head/search_head.sh.tpl", {}))
   key_name               = var.key_name
@@ -16,7 +17,10 @@ resource "aws_instance" "splunk_sh" {
     Name = "Splunk Search Head"
   }
   root_block_device {
-    volume_size = 50
+    volume_size = var.splunk_root_ebs_config.volume_size
+    volume_type = var.splunk_root_ebs_config.volume_type
+    iops        = var.splunk_root_ebs_config.iops != null ? var.splunk_root_ebs_config.iops : null
+    throughput  = var.splunk_root_ebs_config.throughput != null ? var.splunk_root_ebs_config.throughput : null
   }
 }
 
